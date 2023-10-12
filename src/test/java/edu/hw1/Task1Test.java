@@ -66,4 +66,30 @@ public class Task1Test {
         assertThat(answer)
             .isEqualTo(-1);
     }
+    @Test
+    @DisplayName("Максимально допустимое число минут")
+    void maxIntMinutes() {
+        // given
+        int testInt = Integer.MAX_VALUE / 60 - 1;
+        String test = String.valueOf(testInt) + ":59" ;
+
+        // when
+        int answer = Task1.minutesToSeconds(test);
+
+        // then
+        assertThat(answer).isEqualTo((Integer.MAX_VALUE / 60 - 1) * 60 + 59);
+    }
+    @Test
+    @DisplayName("Переполнение числа минут")
+    void overMinutes() {
+        // given
+        int testInt = Integer.MAX_VALUE / 60;
+        String test = String.valueOf(testInt) + ":00" ;
+
+        // when
+        int answer = Task1.minutesToSeconds(test);
+
+        // then
+        assertThat(answer).isEqualTo(-1);
+    }
 }

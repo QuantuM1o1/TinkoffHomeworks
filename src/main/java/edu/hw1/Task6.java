@@ -19,6 +19,7 @@ public class Task6 {
     static final int ALL8 = 8888;
     static final int ALL9 = 9999;
     static final int NUMBER_OF_DIGITS = 4;
+    static final int BASE_TO_ADD = 10;
 
 
     public static int countK(int number) {
@@ -40,6 +41,9 @@ public class Task6 {
             descendingNumber[i] = ascendingNumber[NUMBER_OF_DIGITS - 1 - i];
         }
         int newNumber = Integer.parseInt(new String(descendingNumber)) - Integer.parseInt(new String(ascendingNumber));
+        if (newNumber < MIN_NUMBER) {
+            newNumber = newNumber * BASE_TO_ADD;
+        }
         return 1 + countK(newNumber);
     }
 }

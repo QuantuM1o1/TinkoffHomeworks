@@ -18,6 +18,19 @@ public class Task6Test {
         assertThat(answer).isEqualTo(0);
     }
     @Test
+    @DisplayName("Число, которое даёт 999 после манипуляции")
+    void answerIs999() {
+        // given
+        int test = 1222;
+
+        // when
+        int answer = Task6.countK(test);
+
+        // then
+        // 1222 -> 999 (добавляем ноль 9990) -> 8991 -> 8082 -> 8532 -> 6174
+        assertThat(answer).isEqualTo(5);
+    }
+    @Test
     @DisplayName("3 шага")
     void threeSteps() {
         // given

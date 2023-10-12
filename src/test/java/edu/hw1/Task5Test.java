@@ -2,7 +2,8 @@ package edu.hw1;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Task5Test {
     @Test
@@ -15,7 +16,7 @@ public class Task5Test {
         boolean answer = Task5.isPalindromeDescendant(test);
 
         // then
-        assertThat(answer).isEqualTo(true);
+        assertTrue(answer);
     }
     @Test
     @DisplayName("Четное количество цифр, сам ответ нечетный")
@@ -27,7 +28,7 @@ public class Task5Test {
         boolean answer = Task5.isPalindromeDescendant(test);
 
         // then
-        assertThat(answer).isEqualTo(true);
+        assertTrue(answer);
     }
     @Test
     @DisplayName("Четное количество цифр, сумма цифр больше 9ти, false")
@@ -39,7 +40,7 @@ public class Task5Test {
         boolean answer = Task5.isPalindromeDescendant(test);
 
         // then
-        assertThat(answer).isEqualTo(false);
+        assertFalse(answer);
     }
     @Test
     @DisplayName("Четное количество цифр, сумма цифр больше 9ти, true")
@@ -51,6 +52,6 @@ public class Task5Test {
         boolean answer = Task5.isPalindromeDescendant(test);
 
         // then
-        assertThat(answer).isEqualTo(true);
+        assertTrue(answer);
     }
 }

@@ -2,7 +2,8 @@ package edu.hw1;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Task3Test {
     @Test
@@ -16,7 +17,7 @@ public class Task3Test {
         boolean answer = Task3.isNestable(a1, a2);
 
         // then
-        assertThat(answer).isEqualTo(true);
+        assertTrue(answer);
     }
     @Test
     @DisplayName("Массивы для False")
@@ -29,7 +30,7 @@ public class Task3Test {
         boolean answer = Task3.isNestable(a1, a2);
 
         // then
-        assertThat(answer).isEqualTo(false);
+        assertFalse(answer);
     }
     @Test
     @DisplayName("Пустой массив")
@@ -42,7 +43,7 @@ public class Task3Test {
         boolean answer = Task3.isNestable(a1, a2);
 
         // then
-        assertThat(answer).isEqualTo(false);
+        assertFalse(answer);
     }
     @Test
     @DisplayName("Первый массив из одного элемента, но подходит по условию")
@@ -55,6 +56,6 @@ public class Task3Test {
         boolean answer = Task3.isNestable(a1, a2);
 
         // then
-        assertThat(answer).isEqualTo(true);
+        assertTrue(answer);
     }
 }

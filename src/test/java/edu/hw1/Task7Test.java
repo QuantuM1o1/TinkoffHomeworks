@@ -74,14 +74,14 @@ public class Task7Test {
     @DisplayName("Максимальный инт влево")
     void maxIntLeft() {
         // given
-        int test = 2_147_483_647;
+        int test = Integer.MAX_VALUE;
         int testShift = 3;
 
         // when
         int answer = Task7.rotateLeft(test, testShift);
 
         // then
-        assertThat(answer).isEqualTo(2_147_483_647);
+        assertThat(answer).isEqualTo(Integer.MAX_VALUE);
     }
     @Test
     @DisplayName("Степень двойки вправо на один")
@@ -126,14 +126,14 @@ public class Task7Test {
     @DisplayName("Максимальный инт вправо")
     void maxIntRight() {
         // given
-        int test = 2_147_483_647;
+        int test = Integer.MAX_VALUE;
         int testShift = 5;
 
         // when
         int answer = Task7.rotateRight(test, testShift);
 
         // then
-        assertThat(answer).isEqualTo(2_147_483_647);
+        assertThat(answer).isEqualTo(Integer.MAX_VALUE);
     }
     @Test
     @DisplayName("Число вправо")
