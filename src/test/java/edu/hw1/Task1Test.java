@@ -71,7 +71,7 @@ public class Task1Test {
     void maxIntMinutes() {
         // given
         int testInt = Integer.MAX_VALUE / 60 - 1;
-        String test = String.valueOf(testInt) + ":59" ;
+        String test = testInt + ":59";
 
         // when
         int answer = Task1.minutesToSeconds(test);
@@ -84,7 +84,7 @@ public class Task1Test {
     void overMinutes() {
         // given
         int testInt = Integer.MAX_VALUE / 60;
-        String test = String.valueOf(testInt) + ":00" ;
+        String test = testInt + ":00";
 
         // when
         int answer = Task1.minutesToSeconds(test);
