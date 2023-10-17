@@ -11,14 +11,14 @@ public class GameHangmanTest
     void wordCheck()
     {
         // given
-        GameHangman gameHangman = new GameHangman("OneWordForTest.txt");
+        GameHangman gameHangman = new GameHangman("exampleWord.txt");
 
         // when
         String answer = gameHangman.gameState();
 
         // then
         // слово тестирование
-        assertThat(answer).isEqualTo("************");
+        assertThat(answer).isEqualTo("******");
     }
 
     @Test
