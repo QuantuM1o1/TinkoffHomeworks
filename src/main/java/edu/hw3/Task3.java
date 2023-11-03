@@ -2,6 +2,7 @@ package edu.hw3;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Task3 {
     private Task3() {
@@ -9,13 +10,9 @@ public class Task3 {
 
     public static String[] freqDict(Object[] originalArray) {
         ArrayList<String> array = new ArrayList<>();
-        HashMap<Object, Integer> map = new HashMap<>();
+        Map<Object, Integer> map = new HashMap<>();
         for (Object o : originalArray) {
-            if (map.containsKey(o)) {
-                map.replace(o, map.get(o) + 1);
-            } else {
-                map.put(o, 1);
-            }
+            map.put(o, map.getOrDefault(o, 0) + 1);
         }
         StringBuilder stringBuilder = new StringBuilder();
         for (var o : map.keySet()) {
