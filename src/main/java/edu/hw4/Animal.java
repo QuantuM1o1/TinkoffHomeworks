@@ -10,11 +10,11 @@ public record Animal(String name,
     private final static int NUMBER_OF_LEGS_FOR_TETRAPODA = 4;
     private final static int NUMBER_OF_LEGS_FOR_ARACHNIDA = 8;
 
-    enum Type {
+    public enum Type {
         CAT, DOG, BIRD, FISH, SPIDER
     }
 
-    enum Sex {
+    public enum Sex {
         M, F
     }
 
