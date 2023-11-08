@@ -17,11 +17,13 @@ public class Task4Test {
         test.add(new Animal("Alex", Animal.Type.CAT, Animal.Sex.M, 7, 36, 3, true));
         test.add(new Animal("Kovalski", Animal.Type.BIRD, Animal.Sex.M, 3, 30, 2, false));
         test.add(new Animal("Jewel", Animal.Type.BIRD, Animal.Sex.F, 10, 56, 1, false));
+        test.add(new Animal("Shelob", Animal.Type.SPIDER, Animal.Sex.F, 8, 183, 1800, true));
+        test.add(new Animal("Carcharodon carcharias", Animal.Type.FISH, Animal.Sex.M, 26, 400, 850, true));
 
         // when
         Animal answer = Task4.longestName(test);
 
         // then
-        assertThat(answer.name()).isEqualTo("Kovalski");
+        assertThat(answer.name()).isEqualTo("Carcharodon carcharias");
     }
 }

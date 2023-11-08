@@ -10,8 +10,7 @@ public class Task15 {
 
     public static Map<Animal.Type, Integer> sumOfWeights(List<Animal> animals, int k, int l) {
         return animals.stream()
-            .filter(animal -> animal.age() > k)
-            .filter(animal -> animal.age() < l)
+            .filter(animal -> animal.age() > k && animal.age() < l)
             .collect(Collectors.groupingBy(Animal::type, Collectors.summingInt(Animal::weight)));
     }
 }

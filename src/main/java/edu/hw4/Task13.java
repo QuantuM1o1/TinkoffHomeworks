@@ -8,7 +8,7 @@ public class Task13 {
 
     public static List<Animal> longNames(List<Animal> animals) {
         return animals.stream()
-            .filter(animal -> animal.name().contains(" "))
+            .filter(animal -> animal.name().matches(".+ .+ .+"))
             .toList();
     }
 }

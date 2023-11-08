@@ -9,7 +9,7 @@ public class Task4 {
 
     public static Animal longestName(List<Animal> animals) {
         return animals.stream()
-            .max(Comparator.comparing(Animal::name))
+            .max(Comparator.comparing(animal -> animal.name().length()))
             .orElse(null);
     }
 }
