@@ -12,10 +12,7 @@ public class DFSSolver implements MazeSolver {
 
     @Override
     public List<Integer> solveMaze(Maze maze, Coordinate startingPointCoordinate, Coordinate finalPointCoordinate) {
-        if (startingPointCoordinate.getX() < 0 || startingPointCoordinate.getX() > maze.getWidth() - 1
-            || finalPointCoordinate.getX() < 0 || finalPointCoordinate.getX() > maze.getWidth() - 1
-            || startingPointCoordinate.getY() < 0 || startingPointCoordinate.getY() > maze.getHeight() - 1
-            || finalPointCoordinate.getY() < 0 || finalPointCoordinate.getY() > maze.getHeight() - 1) {
+        if (notValidCoordinate(maze, startingPointCoordinate) || notValidCoordinate(maze, finalPointCoordinate)) {
             return Collections.emptyList();
         }
         int startingPoint = maze.findCell(startingPointCoordinate);
@@ -43,4 +40,6 @@ public class DFSSolver implements MazeSolver {
         path.removeLast();
         return false;
     }
+
+
 }

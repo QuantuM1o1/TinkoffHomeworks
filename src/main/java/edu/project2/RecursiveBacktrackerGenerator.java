@@ -8,9 +8,6 @@ import java.util.Random;
 import java.util.Set;
 
 public class RecursiveBacktrackerGenerator implements MazeGenerator {
-    private final static Coordinate[] POSSIBLE_NEARBY_CELLS =
-        {new Coordinate(0, -1), new Coordinate(1, 0), new Coordinate(0, 1), new Coordinate(-1, 0)};
-
     @Override
     public Maze createMaze(int height, int width) {
         Maze maze = new Maze(height, width);
