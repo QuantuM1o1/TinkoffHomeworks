@@ -15,6 +15,7 @@ public interface MazeGenerator {
         List<Integer> nearbyCells,
         int count,
         Predicate<Integer> condition) {
+        int answer = count;
         for (Coordinate possibleNearbyCell : POSSIBLE_NEARBY_CELLS) {
             Coordinate cellToCheckCoordinate =
                 new Coordinate(currentCellCoordinate.getX() + possibleNearbyCell.getX(),
@@ -24,10 +25,10 @@ public interface MazeGenerator {
                 int cellToCheck = maze.findCell(cellToCheckCoordinate);
                 if (condition.test(cellToCheck)) {
                     nearbyCells.add(cellToCheck);
-                    count++;
+                    answer++;
                 }
             }
         }
-        return count;
+        return answer;
     }
 }
