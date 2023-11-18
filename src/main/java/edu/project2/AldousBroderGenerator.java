@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.function.Predicate;
 
 public class AldousBroderGenerator implements MazeGenerator {
     @Override
@@ -22,17 +23,7 @@ public class AldousBroderGenerator implements MazeGenerator {
             Coordinate currentCellCoordinate = maze.findCoordinates(currentCell);
             List<Integer> nearbyCells = new ArrayList<>();
             int count = 0;
-            for (Coordinate possibleNearbyCell : POSSIBLE_NEARBY_CELLS) {
-                Coordinate cellToCheckCoordinate =
-                    new Coordinate(currentCellCoordinate.getX() + possibleNearbyCell.getX(),
-                        currentCellCoordinate.getY() + possibleNearbyCell.getY());
-                if (cellToCheckCoordinate.getX() >= 0 && cellToCheckCoordinate.getX() < maze.getWidth()
-                    && cellToCheckCoordinate.getY() >= 0 && cellToCheckCoordinate.getY() < maze.getHeight()) {
-                    int cellToCheck = maze.findCell(cellToCheckCoordinate);
-                    nearbyCells.add(cellToCheck);
-                    count++;
-                }
-            }
+            count = checkNearbyCells(currentCellCoordinate, maze, nearbyCells, count, cellToCheck -> true);
             int nextCell = rand.nextInt() % count;
             nextCell = Math.abs(nextCell);
             nextCell = nearbyCells.get(nextCell);

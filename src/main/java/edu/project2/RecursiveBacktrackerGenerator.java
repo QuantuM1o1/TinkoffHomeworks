@@ -26,19 +26,7 @@ public class RecursiveBacktrackerGenerator implements MazeGenerator {
             Coordinate currentCellCoordinate = maze.findCoordinates(currentCell);
             ArrayList<Integer> nearbyCells = new ArrayList<>();
             int count = 0;
-            for (Coordinate possibleNearbyCell : POSSIBLE_NEARBY_CELLS) {
-                Coordinate cellToCheckCoordinate =
-                    new Coordinate(currentCellCoordinate.getX() + possibleNearbyCell.getX(),
-                    currentCellCoordinate.getY() + possibleNearbyCell.getY());
-                if (cellToCheckCoordinate.getX() >= 0 && cellToCheckCoordinate.getX() < maze.getWidth()
-                    && cellToCheckCoordinate.getY() >= 0 && cellToCheckCoordinate.getY() < maze.getHeight()) {
-                    int cellToCheck = maze.findCell(cellToCheckCoordinate);
-                    if (uncheckedCells.contains(cellToCheck)) {
-                        nearbyCells.add(cellToCheck);
-                        count++;
-                    }
-                }
-            }
+            count = checkNearbyCells(currentCellCoordinate, maze, nearbyCells, count, uncheckedCells::contains);
             if (count == 0) {
                 continue;
             }

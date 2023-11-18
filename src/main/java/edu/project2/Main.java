@@ -8,7 +8,7 @@ public class Main {
 
     @SuppressWarnings({"MagicNumber", "RegexpSinglelineJava"})
     public static void main(String[] args) {
-        MazeGenerator generator = new AldousBroderGenerator();
+        MazeGenerator generator = new RecursiveBacktrackerGenerator();
         Maze maze = generator.createMaze(8, 50);
         MazeSolver solver = new DFSSolver();
         Coordinate start = new Coordinate(0, 0);
