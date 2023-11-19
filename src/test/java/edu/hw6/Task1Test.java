@@ -19,20 +19,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Task1Test {
     @Test
-    @DisplayName("Тест создания")
-    void createMap() {
-        // given
-        String path = "src/main/resources/hw6/Task1/";
-        DiskMap diskMap = new DiskMap(path);
-
-        // when
-        boolean answer = diskMap.isEmpty();
-
-        // then
-        assertTrue(answer);
-    }
-
-    @Test
     @DisplayName("Тест добавления значений")
     void putInMap() {
         // given

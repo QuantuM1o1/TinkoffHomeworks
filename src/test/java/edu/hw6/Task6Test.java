@@ -13,6 +13,7 @@ public class Task6Test {
     void hackerNewsLength() {
         // given
         try (ServerSocket serverSocket = new ServerSocket(1112)) {
+            serverSocket.getChannel();
             List<Integer> answer = Task6.scanPorts();
             assertTrue(answer.contains(1112));
         } catch (IOException e) {
