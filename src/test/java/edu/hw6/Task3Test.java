@@ -8,7 +8,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static edu.hw6.Task3.AbstractFilter.EXECUTABLE;
 import static edu.hw6.Task3.AbstractFilter.globMatches;
 import static edu.hw6.Task3.AbstractFilter.largerThan;
 import static edu.hw6.Task3.AbstractFilter.lessThan;
