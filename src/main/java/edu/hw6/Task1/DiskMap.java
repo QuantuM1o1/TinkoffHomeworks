@@ -63,7 +63,7 @@ public class DiskMap implements Map<String, String> {
 
     private List<Path> findPathList() {
         PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:" + stringDirectory + "*");
-        Path sourcePath = Paths.get("src\\");
+        Path sourcePath = Paths.get("src/");
         try (Stream<Path> paths = Files.find(sourcePath, Integer.MAX_VALUE, (path, f) -> pathMatcher.matches(path))) {
             return paths.toList();
         } catch (IOException e) {
@@ -124,7 +124,7 @@ public class DiskMap implements Map<String, String> {
 
     @Override
     public boolean containsKey(Object key) {
-        Path path = Paths.get(this.mainDirectory + "\\" + key);
+        Path path = Paths.get(this.mainDirectory + "/" + key);
         return Files.isReadable(path);
     }
 
@@ -146,7 +146,7 @@ public class DiskMap implements Map<String, String> {
         if (!this.containsKey(key)) {
             return null;
         }
-        Path path = Paths.get(this.mainDirectory + "\\" + key);
+        Path path = Paths.get(this.mainDirectory + "/" + key);
         String string = this.readFile(path);
         List<String> keyValue = parseString(string);
         return keyValue.get(1);
@@ -159,7 +159,7 @@ public class DiskMap implements Map<String, String> {
         if (!this.containsKey(key)) {
             oldValue = this.get(key);
         }
-        Path path = Paths.get(this.mainDirectory + "\\" + key);
+        Path path = Paths.get(this.mainDirectory + "/" + key);
         if (!Files.isWritable(path)) {
             try {
                 Files.createFile(path);
@@ -181,7 +181,7 @@ public class DiskMap implements Map<String, String> {
         if (this.containsKey(key)) {
             oldValue = this.get(key);
         }
-        Path path = Paths.get(this.mainDirectory + "\\" + key);
+        Path path = Paths.get(this.mainDirectory + "/" + key);
         try {
             Files.delete(path);
         } catch (IOException ignored) {
