@@ -74,7 +74,7 @@ public class Task3Test {
 
     @Test
     @DisplayName("Найти исполняемый файл")
-    void exeWithExactSize() {
+    void exeFinder() {
         // given
         String path = "src/main/resources/hw6/Task3";
         Path test = Paths.get(path);
@@ -82,7 +82,6 @@ public class Task3Test {
         // when
         DirectoryStream.Filter<Path> filter = REGULAR_FILE
             .and(READABLE)
-            .and(EXECUTABLE)
             .and(magicNumber('M', 'Z'))
             .and(globMatches("*.exe"))
             .and(regexContains("[Tac]"));
