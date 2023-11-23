@@ -48,6 +48,7 @@ public class Task3Test {
                         && (database.findByPhone(phoneNumbers.get(randNum)) == null
                         && database.findByAddress(addresses.get(randNum)) == null)) {
                         answer.set(false);
+                        database.delete(randNum);
                     }
                 }))
             .limit(numberOfThreads)
@@ -92,6 +93,7 @@ public class Task3Test {
                         && (database.findByPhone(phoneNumbers.get(randNum)) == null
                         && database.findByAddress(addresses.get(randNum)) == null)) {
                         answer.set(false);
+                        database.delete(randNum);
                     }
                 }))
             .limit(numberOfReads)
