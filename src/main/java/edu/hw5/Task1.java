@@ -25,7 +25,7 @@ public class Task1 {
                 time1 = LocalDateTime.parse(string1, DateTimeFormatter.ofPattern(PATTERN_FOR_FORMATTER));
                 time2 = LocalDateTime.parse(string2, DateTimeFormatter.ofPattern(PATTERN_FOR_FORMATTER));
             } catch (DateTimeParseException e) {
-                return "Input can't be parsed";
+                throw new RuntimeException("Input should be of 'yyyy-MM-dd, HH:mm' format");
             }
             if (time1.isAfter(time2)) {
                 return "Input returns negative answer";

@@ -27,12 +27,12 @@ public class Task2 {
         LocalDate nextFriday;
         for (LocalDate date : list) {
             if (date.isAfter(currentDate)) {
-                nextFriday = (LocalDate) date.adjustInto(currentDate);
+                nextFriday = currentDate.with(date);
                 return nextFriday;
             }
         }
         list = allFridays13thOfTheYear(currentDate.plusYears(1).getYear());
-        nextFriday = (LocalDate) list.get(0).adjustInto(currentDate);
+        nextFriday = currentDate.with(list.get(0));
         return nextFriday;
     }
 }

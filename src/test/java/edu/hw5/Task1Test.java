@@ -1,10 +1,11 @@
 package edu.hw5;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class Task1Test {
     @Test
@@ -55,9 +56,9 @@ public class Task1Test {
         test.add("2022-03-22, 22:30 - 2022-03-23, 05:18");
 
         // when
-        String answer = Task1.averageTime(test);
+        Exception exception = assertThrows(RuntimeException.class, () -> Task1.averageTime(test));
 
         // then
-        assertThat(answer).isEqualTo("Input can't be parsed");
+        assertThat(exception.getMessage()).isEqualTo("Input should be of 'yyyy-MM-dd, HH:mm' format");
     }
 }
