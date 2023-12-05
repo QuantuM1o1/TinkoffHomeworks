@@ -25,6 +25,7 @@ public class Task2Test {
             DirectoryFinder finder = new DirectoryFinder(test, numberOfFiles);
             answer = forkJoinPool.invoke(finder);
         }
+        answer.sort(Comparator.naturalOrder());
 
         // then
         assertThat(answer.size()).isEqualTo(2);
@@ -46,7 +47,6 @@ public class Task2Test {
             PredicateFinder finder = new PredicateFinder(test, size, extension);
             answer = forkJoinPool.invoke(finder);
         }
-        answer.sort(Comparator.naturalOrder());
 
         // then
         assertThat(answer.size()).isEqualTo(1);
