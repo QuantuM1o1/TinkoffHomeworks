@@ -3,6 +3,7 @@ package edu.hw9;
 import edu.hw9.Task2.DirectoryFinder;
 import edu.hw9.Task2.PredicateFinder;
 import java.io.File;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.ForkJoinPool;
 import org.junit.jupiter.api.DisplayName;
@@ -45,6 +46,7 @@ public class Task2Test {
             PredicateFinder finder = new PredicateFinder(test, size, extension);
             answer = forkJoinPool.invoke(finder);
         }
+        answer.sort(Comparator.naturalOrder());
 
         // then
         assertThat(answer.size()).isEqualTo(1);
