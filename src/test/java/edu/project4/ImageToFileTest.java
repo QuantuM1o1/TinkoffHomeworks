@@ -19,7 +19,7 @@ public class ImageToFileTest {
         int num = 100;
         int numberOfAffine = 4;
         int symmetry = 1;
-        String path = "src/main/resources/project4/flame3.bmp";
+        String path = "src/main/resources/project4/flame4.bmp";
         FractalFlameRenderer renderer = new MultiThreadRenderer(4);
         List<NonLinearTransformation> nonLinearTransformations = new ArrayList<>();
         nonLinearTransformations.add(new SinusoidalTransformation());

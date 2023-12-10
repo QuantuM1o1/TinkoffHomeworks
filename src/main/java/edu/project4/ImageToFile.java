@@ -33,7 +33,7 @@ public class ImageToFile {
             }
             LOGGER.info("Image saved successfully to: " + filePath);
         } catch (IOException e) {
-            throw new RuntimeException("Couldn't create file");
+            throw new RuntimeException("Couldn't create a file");
         }
     }
 }
