@@ -1,13 +1,13 @@
 package edu.project3;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class FileCreatorTest {
@@ -27,7 +27,7 @@ public class FileCreatorTest {
             2642,
             "-",
             "Opera/10.33"
-            ));
+        ));
         logList.add(new Log(
             "130.220.210.145",
             "-",
@@ -60,8 +60,7 @@ public class FileCreatorTest {
 
         // then
         assertThat(answer).isEqualTo("""
-                ### Общая информация:\s
-                \s
+                ### Общая информация:""" + System.lineSeparator() + System.lineSeparator() + """
                 |               Метрика | Значение |
                 |:---------------------:|:--------:|
                 |              Файл(-ы) | logs.txt |

@@ -18,9 +18,9 @@ public class PathFinder {
     private PathFinder() {
     }
 
-    public static List<Path> findPath(String input) {
+    public static List<Path> findPath(String input, String source) {
         PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:" + input);
-        Path sourcePath = Paths.get("src\\");
+        Path sourcePath = Paths.get(source);
         try (Stream<Path> paths = Files.find(sourcePath, Integer.MAX_VALUE, (path, f) -> pathMatcher.matches(path))) {
             return paths.toList();
         } catch (IOException e) {
