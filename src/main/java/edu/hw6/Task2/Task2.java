@@ -1,4 +1,4 @@
-package edu.hw6;
+package edu.hw6.Task2;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -8,12 +8,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Task2 {
+    public static final String REGEX_TO_FIND_FILENAME = "(.+)(\\..+)";
+
     private Task2() {
     }
 
     public static Path cloneFile(Path path) {
         String pathString = path.getFileName().toString();
-        Pattern pattern = Pattern.compile("(.+)(\\..+)");
+        Pattern pattern = Pattern.compile(REGEX_TO_FIND_FILENAME);
         Matcher matcher = pattern.matcher(pathString);
         String stringToFind;
         Path pathOfCopy = path;

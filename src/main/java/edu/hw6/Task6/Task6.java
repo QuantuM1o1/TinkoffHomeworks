@@ -1,4 +1,4 @@
-package edu.hw6;
+package edu.hw6.Task6;
 
 import java.io.IOException;
 import java.net.DatagramSocket;
@@ -19,10 +19,9 @@ public class Task6 {
     private static final int LENGTH_OF_PORT = 5;
     private static final int NUMBER_OF_REGISTERED_PORTS = 49152;
 
-    private static final Map<Integer, String> COMMON_PORTS;
+    private static final Map<Integer, String> COMMON_PORTS = new HashMap<>();
 
     static {
-        COMMON_PORTS = new HashMap<>();
         COMMON_PORTS.put(80, "HTTP");
         COMMON_PORTS.put(21, "FTP");
         COMMON_PORTS.put(25, "SMTP");

@@ -8,14 +8,14 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static edu.hw6.Task3.AbstractFilter.globMatches;
-import static edu.hw6.Task3.AbstractFilter.largerThan;
-import static edu.hw6.Task3.AbstractFilter.lessThan;
-import static edu.hw6.Task3.AbstractFilter.magicNumber;
-import static edu.hw6.Task3.AbstractFilter.READABLE;
-import static edu.hw6.Task3.AbstractFilter.regexContains;
-import static edu.hw6.Task3.AbstractFilter.REGULAR_FILE;
-import static edu.hw6.Task3.AbstractFilter.WRITABLE;
+import static edu.hw6.Task3.AbstractFilterImpl.globMatches;
+import static edu.hw6.Task3.AbstractFilterImpl.largerThan;
+import static edu.hw6.Task3.AbstractFilterImpl.lessThan;
+import static edu.hw6.Task3.AbstractFilterImpl.magicNumber;
+import static edu.hw6.Task3.AbstractFilterImpl.readable;
+import static edu.hw6.Task3.AbstractFilterImpl.regexContains;
+import static edu.hw6.Task3.AbstractFilterImpl.regularFile;
+import static edu.hw6.Task3.AbstractFilterImpl.writable;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task3Test {
@@ -27,8 +27,8 @@ public class Task3Test {
         Path test = Paths.get(path);
 
         // when
-        DirectoryStream.Filter<Path> filter = REGULAR_FILE
-            .and(READABLE)
+        DirectoryStream.Filter<Path> filter = regularFile
+            .and(readable)
             .and(largerThan(100_000))
             .and(magicNumber(0x89, 'P', 'N', 'G'))
             .and(globMatches("*.png"))
@@ -53,9 +53,9 @@ public class Task3Test {
         Path test = Paths.get(path);
 
         // when
-        DirectoryStream.Filter<Path> filter = REGULAR_FILE
-            .and(READABLE)
-            .and(WRITABLE)
+        DirectoryStream.Filter<Path> filter = regularFile
+            .and(readable)
+            .and(writable)
             .and(lessThan(10))
             .and(globMatches("*.txt"))
             .and(regexContains("[1]"));
@@ -79,8 +79,8 @@ public class Task3Test {
         Path test = Paths.get(path);
 
         // when
-        DirectoryStream.Filter<Path> filter = REGULAR_FILE
-            .and(READABLE)
+        DirectoryStream.Filter<Path> filter = regularFile
+            .and(readable)
             .and(magicNumber('M', 'Z'))
             .and(globMatches("*.exe"))
             .and(regexContains("[Tac]"));

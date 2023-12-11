@@ -28,17 +28,18 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class DiskMap implements Map<String, String> {
-    public static final int BUFFER_CAPACITY = 48;
+    private static final int BUFFER_CAPACITY = 48;
     private static final String MESSAGE_IF_FILE_WAS_NOT_FOUND = "File not found";
-    private static final String END_OF_LINE = "\\n";
     private final static Logger LOGGER = LogManager.getLogger();
     private final Path mainDirectory;
     private final String stringDirectory;
+    private int size;
 
     public DiskMap(String mainDirectory) {
         this.mainDirectory = Paths.get(mainDirectory);
         stringDirectory = mainDirectory;
         this.clear();
+        this.size = 0;
     }
 
     public DiskMap(String mainDirectory, Path downloadFile) {
@@ -105,7 +106,7 @@ public class DiskMap implements Map<String, String> {
 
     public void downloadFromFile(Path path) {
         String fullFile = this.readFile(path);
-        String[] strings = fullFile.split(END_OF_LINE);
+        String[] strings = fullFile.split(System.lineSeparator());
         for (String string : strings) {
             List<String> keyValue = parseString(string);
             this.put(keyValue.get(0), keyValue.get(1));
@@ -114,7 +115,7 @@ public class DiskMap implements Map<String, String> {
 
     @Override
     public int size() {
-        return this.findPathList().size();
+        return this.size;
     }
 
     @Override
@@ -172,6 +173,7 @@ public class DiskMap implements Map<String, String> {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        size++;
         return oldValue;
     }
 
@@ -186,6 +188,7 @@ public class DiskMap implements Map<String, String> {
             Files.delete(path);
         } catch (IOException ignored) {
         }
+        size--;
         return oldValue;
     }
 
@@ -201,6 +204,7 @@ public class DiskMap implements Map<String, String> {
         for (Object key : this.keySet()) {
             remove(key);
         }
+        size = 0;
     }
 
     @NotNull
@@ -211,7 +215,7 @@ public class DiskMap implements Map<String, String> {
        for (Path path : pathList) {
             String string = this.readFile(path);
             List<String> keyValue = parseString(string);
-            set.add(keyValue.get(0));
+            set.add(keyValue.getFirst());
         }
         return set;
     }
