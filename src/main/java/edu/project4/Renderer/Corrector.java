@@ -1,4 +1,6 @@
-package edu.project4;
+package edu.project4.Renderer;
+
+import edu.project4.Image.Pixel;
 
 public class Corrector {
     private Corrector() {

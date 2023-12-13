@@ -1,5 +1,7 @@
 package edu.project4;
 
+import edu.project4.Image.Pixel;
+import edu.project4.Renderer.Corrector;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

@@ -1,5 +1,8 @@
-package edu.project4;
+package edu.project4.Renderer;
 
+import edu.project4.Image.Pixel;
+import edu.project4.LInearTransformations.AffineTransformation;
+import edu.project4.NonLinearTransformations.NonLinearTransformation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -57,5 +60,32 @@ public class SingleThreadRenderer implements FractalFlameRenderer {
         }
         Corrector.correction(pixels, xRes, yRes);
         return pixels;
+    }
+
+    private void paintPixel(int x, int y, Pixel[][] pixels, AffineTransformation transformation) {
+        if (pixels[x][y].getHitCount() == 0) {
+            pixels[x][y].setRed(transformation.getRed());
+            pixels[x][y].setGreen(transformation.getGreen());
+            pixels[x][y].setBlue(transformation.getBlue());
+        } else {
+            pixels[x][y].setRed((pixels[x][y].getRed() + transformation.getRed()) / 2);
+            pixels[x][y].setGreen((pixels[x][y].getGreen() + transformation.getGreen()) / 2);
+            pixels[x][y].setBlue((pixels[x][y].getBlue() + transformation.getBlue()) / 2);
+        }
+        pixels[x][y].incrementHitCount();
+    }
+
+    private void rotateAndPaint(
+        int x, int y, int symmetry, int xRes, int yRes, Pixel[][] pixels, AffineTransformation transformation
+    ) {
+        int rotationSteps = symmetry / 2;
+        for (int k = 1; k <= rotationSteps; k++) {
+            double angle = 2 * Math.PI * k / symmetry;
+            int rotatedX = (int) (Math.cos(angle) * (x - xRes / 2) - Math.sin(angle) * (y - yRes / 2) + xRes / 2);
+            int rotatedY = (int) (Math.sin(angle) * (x - xRes / 2) + Math.cos(angle) * (y - yRes / 2) + yRes / 2);
+            if (rotatedX >= 0 && rotatedX < xRes && rotatedY >= 0 && rotatedY < yRes) {
+                paintPixel(rotatedX, rotatedY, pixels, transformation);
+            }
+        }
     }
 }

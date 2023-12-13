@@ -2,6 +2,13 @@ package edu.project4;
 
 import java.util.ArrayList;
 import java.util.List;
+import edu.project4.Image.Pixel;
+import edu.project4.NonLinearTransformations.HeartTransformation;
+import edu.project4.NonLinearTransformations.HorseshoeTransformation;
+import edu.project4.NonLinearTransformations.NonLinearTransformation;
+import edu.project4.Renderer.FractalFlameRenderer;
+import edu.project4.Renderer.MultiThreadRenderer;
+import edu.project4.Renderer.SingleThreadRenderer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

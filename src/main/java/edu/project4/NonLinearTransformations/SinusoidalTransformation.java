@@ -1,4 +1,4 @@
-package edu.project4;
+package edu.project4.NonLinearTransformations;
 
 public class SinusoidalTransformation implements NonLinearTransformation {
     public SinusoidalTransformation() {

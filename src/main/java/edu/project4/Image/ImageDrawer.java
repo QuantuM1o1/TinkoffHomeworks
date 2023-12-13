@@ -1,4 +1,4 @@
-package edu.project4;
+package edu.project4.Image;
 
 import java.awt.image.BufferedImage;
 

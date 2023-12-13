@@ -1,4 +1,4 @@
-package edu.project4;
+package edu.project4.NonLinearTransformations;
 
 public class SwirlTransformation implements NonLinearTransformation {
     public SwirlTransformation() {

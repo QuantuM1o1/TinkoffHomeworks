@@ -1,5 +1,12 @@
 package edu.project4;
 
+import edu.project4.Image.ImageDrawer;
+import edu.project4.Image.ImageToFile;
+import edu.project4.Image.Pixel;
+import edu.project4.NonLinearTransformations.NonLinearTransformation;
+import edu.project4.NonLinearTransformations.SwirlTransformation;
+import edu.project4.Renderer.FractalFlameRenderer;
+import edu.project4.Renderer.MultiThreadRenderer;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;

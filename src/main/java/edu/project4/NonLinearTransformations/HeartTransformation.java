@@ -1,4 +1,4 @@
-package edu.project4;
+package edu.project4.NonLinearTransformations;
 
 public class HeartTransformation implements NonLinearTransformation {
     public HeartTransformation() {
