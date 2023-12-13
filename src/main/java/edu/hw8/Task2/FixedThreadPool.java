@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
-public class FixedThreadPool implements ThreadPool {
+public class FixedThreadPool implements ThreadPool, AutoCloseable {
     private final Thread[] threads;
     private final Queue<Runnable> queue;
 

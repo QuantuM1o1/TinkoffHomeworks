@@ -8,7 +8,7 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 
-class Handler implements Runnable {
+class Handler implements Runnable, AutoCloseable {
     private final Map<String, String> map;
 
     {
@@ -35,9 +35,13 @@ class Handler implements Runnable {
             String input = new BufferedReader(new InputStreamReader(socket.getInputStream())).readLine();
             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
             writer.println(map.get(input));
-            socket.close();
         } catch (IOException e) {
             throw new RuntimeException("Server couldn't read from a client");
         }
+    }
+
+    @Override
+    public void close() throws Exception {
+        socket.close();
     }
 }

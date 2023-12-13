@@ -22,17 +22,21 @@ public class Server implements Runnable {
 
     @Override
     public void run() {
+        Handler handler = null;
         try {
             while (true) {
-                Handler handler = new Handler(server.accept());
+                handler = new Handler(server.accept());
                 threadPool.execute(handler);
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             threadPool.shutdown();
         }
         try {
+            if (handler != null) {
+                handler.close();
+            }
             server.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             throw new RuntimeException("Server hasn't been able to close");
         }
         threadPool.shutdown();
