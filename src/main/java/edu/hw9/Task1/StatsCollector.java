@@ -19,38 +19,10 @@ public class StatsCollector {
     }
 
     public void push(String metric, double[] numbers) {
-        threadPool.execute(() -> {
-            Double answer = Arrays.stream(numbers).sum();
-            String name = "Sum of " + metric;
-            output.put(name, answer);
-        });
-
-        threadPool.execute(() -> {
-            Double answer = null;
-            if (Arrays.stream(numbers).average().isPresent()) {
-                answer = Arrays.stream(numbers).average().getAsDouble();
-            }
-            String name = "Average of " + metric;
-            output.put(name, answer);
-        });
-
-        threadPool.execute(() -> {
-            Double answer = null;
-            if (Arrays.stream(numbers).max().isPresent()) {
-                answer = Arrays.stream(numbers).max().getAsDouble();
-            }
-            String name = "Max of " + metric;
-            output.put(name, answer);
-        });
-
-        threadPool.execute(() -> {
-            Double answer = null;
-            if (Arrays.stream(numbers).min().isPresent()) {
-                answer = Arrays.stream(numbers).min().getAsDouble();
-            }
-            String name = "Min of " + metric;
-            output.put(name, answer);
-        });
+        sumStat(metric, numbers);
+        averageStat(metric, numbers);
+        maxStat(metric, numbers);
+        minStat(metric, numbers);
     }
 
     public Map<String, Double> stats() {
@@ -67,5 +39,46 @@ public class StatsCollector {
             Thread.currentThread().interrupt();
         }
         return output;
+    }
+
+    private void sumStat(String metric, double[] numbers) {
+        threadPool.execute(() -> {
+            Double answer = Arrays.stream(numbers).sum();
+            String name = "Sum of " + metric;
+            output.put(name, answer);
+        });
+    }
+
+    private void averageStat(String metric, double[] numbers) {
+        threadPool.execute(() -> {
+            Double answer = null;
+            if (Arrays.stream(numbers).average().isPresent()) {
+                answer = Arrays.stream(numbers).average().getAsDouble();
+            }
+            String name = "Average of " + metric;
+            output.put(name, answer);
+        });
+    }
+
+    private void maxStat(String metric, double[] numbers) {
+        threadPool.execute(() -> {
+            Double answer = null;
+            if (Arrays.stream(numbers).max().isPresent()) {
+                answer = Arrays.stream(numbers).max().getAsDouble();
+            }
+            String name = "Max of " + metric;
+            output.put(name, answer);
+        });
+    }
+
+    private void minStat(String metric, double[] numbers) {
+        threadPool.execute(() -> {
+            Double answer = null;
+            if (Arrays.stream(numbers).min().isPresent()) {
+                answer = Arrays.stream(numbers).min().getAsDouble();
+            }
+            String name = "Min of " + metric;
+            output.put(name, answer);
+        });
     }
 }
