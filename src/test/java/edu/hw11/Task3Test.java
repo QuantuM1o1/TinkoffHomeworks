@@ -26,7 +26,7 @@ public class Task3Test {
 
         // when
         try {
-            Object instance = dynamicType.newInstance();
+            Object instance = dynamicType.getConstructor().newInstance();
             answer = (int) dynamicType.getMethod("fib", int.class).invoke(instance, 10);
         } catch (Exception e) {
             throw new RuntimeException(e);
